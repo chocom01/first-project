@@ -5,7 +5,6 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.belongs_to :item
       t.datetime :start_rent_at
       t.datetime :end_rent_at
-
       t.timestamps
     end
   end
