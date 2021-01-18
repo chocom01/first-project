@@ -20,21 +20,21 @@ cities = City.create(
 )
 users = User.create(
   [
-    { first_name: 'Kolya', city_id: 1 },
-    { first_name: 'Igor', city_id: 1 },
-    { first_name: 'Nazar', city_id: 2 },
-    { first_name: 'Taras', city_id: 2 }
+    { first_name: 'Kolya', last_name: 'Vasyliv', age: 20, address: 'qwerty', city_id: 1 },
+    { first_name: 'Igor', last_name: 'Ksdgdsg', age: 20, address: 'qwerty', city_id: 1 },
+    { first_name: 'Nazar', last_name: 'Klfjhdlf', age: 22, address: 'qwerty', city_id: 2 },
+    { first_name: 'Taras', last_name: 'Dsfas', age: 21, address: 'qwerty', city_id: 2 }
   ]
 )
 items = Item.create(
   [
-    { name: 'PC', user_id: 1 },
-    { name: 'table', user_id: 1 },
-    { name: 'smartphone', user_id: 2 },
-    { name: 'MP3', user_id: 2 },
-    { name: 'mouse', user_id: 3 },
-    { name: 'vallet', user_id: 3 },
-    { name: 'key', user_id: 3 }
+    { name: 'PC1', description: 'qwe', price: 2, user_id: 1 },
+    { name: 'table', description: 'qwe', price: 5, user_id: 1 },
+    { name: 'smartphone', description: 'qwe', price: 21, user_id: 1 },
+    { name: 'MP3', description: 'qwe', price: 5, user_id: 1 },
+    { name: 'mouse', description: 'qwe', price: 1, user_id: 1 },
+    { name: 'vallet', description: 'qwe', price: 2, user_id: 1 },
+    { name: 'key', description: 'qwe', price: 2, user_id: 1 }
   ]
 )
 reviews = Review.create(

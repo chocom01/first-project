@@ -18,17 +18,27 @@ ActiveRecord::Schema.define(version: 2021_01_11_101003) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
+    t.datetime "start_rent_at"
+    t.datetime "end_rent_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_bookings_on_item_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
+    t.text "description"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -36,6 +46,10 @@ ActiveRecord::Schema.define(version: 2021_01_11_101003) do
     t.bigint "user_id"
     t.string "reviewable_type"
     t.bigint "reviewable_id"
+    t.float "review_rate"
+    t.text "review_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -43,6 +57,11 @@ ActiveRecord::Schema.define(version: 2021_01_11_101003) do
   create_table "users", force: :cascade do |t|
     t.bigint "city_id"
     t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 
