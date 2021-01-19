@@ -12,6 +12,7 @@
 # reviews = Review.create([{ user_id: 2, reviewable: Item.find(1) },
 #   { user_id: 2, reviewable: Item.find(2) }])
 
+
 cities = City.create(
   [
     { name: 'Lviv' },
