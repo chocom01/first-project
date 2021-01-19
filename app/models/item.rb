@@ -10,5 +10,6 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :price, numericality: { greater_than: 0, allow_nil: true }
 
-  scope :by_city, ->(city_id) { joins(user: :city).where(cities: { id: city_id }) }
+  scope :by_city,
+        ->(city_id) { joins(user: :city).where(cities: { id: city_id }) }
 end
