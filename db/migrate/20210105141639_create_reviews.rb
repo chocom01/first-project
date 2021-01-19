@@ -5,7 +5,6 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.references :reviewable, polymorphic: true
       t.float :review_rate
       t.text :review_text
-
       t.timestamps
     end
   end
