@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_101003) do
     t.bigint "user_id"
     t.string "reviewable_type"
     t.bigint "reviewable_id"
-    t.float "review_rate"
+    t.integer "review_rate"
     t.text "review_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
