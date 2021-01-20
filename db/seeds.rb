@@ -36,20 +36,17 @@ items = Item.create(
     { name: 'key', description: 'qwe', price: 2, user_id: 1 }
   ]
 )
-reviews = Review.create(
-  [
-    { user_id: 2, reviewable: Item.find(1) },
-    { user_id: 2, reviewable: Item.find(2) },
-    { user_id: 1, reviewable: Item.find(3) },
-    { user_id: 1, reviewable: Item.find(5) },
-    { user_id: 1, reviewable: Item.find(6) },
-    { user_id: 1, reviewable: Item.find(7) }
-  ]
-)
 booking = Booking.create(
   [
-    { user_id: 1, item_id: 4 },
-    { user_id: 2, item_id: 3 },
-    { user_id: 4, item_id: 3 }
+    { user_id: 2, item_id: 4, start_rent_at: '01.01.2000', end_rent_at: '02.01.2000' },
+    { user_id: 3, item_id: 3, start_rent_at: '01.01.2000', end_rent_at: '02.01.2000' },
+    { user_id: 4, item_id: 3, start_rent_at: '01.01.2000', end_rent_at: '02.01.2000' }
+  ]
+)
+reviews = Review.create(
+  [
+    { user_id: 2, reviewable: Item.find(4), review_rate: 1, review_text: 'bad' },
+    { user_id: 3, reviewable: Item.find(3), review_rate: 1, review_text: 'bad' },
+    { user_id: 4, reviewable: Item.find(3), review_rate: 1, review_text: 'bad' }
   ]
 )
