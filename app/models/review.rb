@@ -24,11 +24,11 @@ class Review < ApplicationRecord
   end
 
   def user_booked_item?
-    Booking.where(user_id: user_id, item_id: reviewable_id).empty?
+    Booking.where(user_id: user_id, item_id: reviewable_id).exists?
   end
 
   def user_booked_item_of_owner?
     Booking.joins(:item)
-           .where(user_id: user_id, items: { user_id: reviewable_id }).empty?
+           .where(user_id: user_id, items: { user_id: reviewable_id }).exists?
   end
 end
