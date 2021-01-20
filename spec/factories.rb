@@ -19,4 +19,26 @@ FactoryBot.define do
   factory :city do
     name { 'Lviv' }
   end
+
+  factory :booking do
+    user
+    item
+    start_rent_at { '01.01.2000' }
+    end_rent_at { '02.01.2000' }
+  end
+
+  factory :review do
+    user
+    for_item
+    review_rate { 2 }
+    review_text { 'Very nice item' }
+  end
+
+  trait :for_item do
+    association :reviewable, factory: :item
+  end
+
+  trait :for_user do
+    association :reviewable, factory: :user
+  end
 end
