@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :item do
     name { 'apple' }
     price  { 20 }
-    description { 'dsg' }
+    description { 'Cool item' }
     user
   end
 
@@ -12,7 +12,7 @@ FactoryBot.define do
     first_name { 'John' }
     last_name  { 'Doe' }
     age { 20 }
-    address { 'qwertyqw' }
+    address { 'Lviv, St. Stryiska 22' }
     city
   end
 

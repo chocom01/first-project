@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
   let(:first_name) { 'John' }
   let(:last_name) { 'Doe' }
   let(:age) { 20 }
-  let(:address) { 'Lviv, St' }
+  let(:address) { 'Lviv, St. Stryiska 22' }
 
   context 'when all parameters valid' do
     it 'is valid' do
