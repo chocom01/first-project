@@ -5,6 +5,10 @@ class Review < ApplicationRecord
   belongs_to :user
 
   validate :rights_to_live_review
+  validates :review_rate, numericality: {
+    only_integer: true, greater_than: 0, less_than: 6
+  }
+  validates :review_text, length: { in: 5..30 }
 
   private
 

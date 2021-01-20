@@ -13,5 +13,5 @@ class User < ApplicationRecord
   validates :age, numericality: {
     only_integer: true, greater_than_or_equal_to: 18, less_than: 100
   }
-  validates :address, length: { in: 6..15 }
+  validates :address, length: { in: 6..30 }
 end
