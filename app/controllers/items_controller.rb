@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(user: current_user, **item_params)
+    item = Item.new(user: current_user, category: category, **item_params)
     return render_errors(item.errors) unless item.save
 
     render json: item
@@ -40,6 +40,9 @@ class ItemsController < ApplicationController
     (@item = Item.find_by(id: params[:id])) || head(:not_found)
   end
 
+ def category
+   @category = Category.first
+ end
   def current_user
     @current_user ||= User.first
   end
