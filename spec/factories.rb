@@ -1,10 +1,23 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :option do
+    name { "Black" }
+  end
+
+  factory :filter do
+    name { "Color" }
+  end
+
+  factory :category do
+    name { "Furniture" }
+  end
+
   factory :item do
     name { 'apple' }
     price  { 20 }
     description { 'Cool item' }
+    category
     user
   end
 
