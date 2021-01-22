@@ -15,5 +15,12 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than: 0, allow_nil: true }
 
   scope :by_city,
-        ->(city_id) { joins(user: :city).where(cities: { id: city_id }) }
+        ->(city) { joins(user: :city).where(cities: { id: city }) }
+  scope :filter_by_start_with, ->(name) { where('name like ?', "#{name}%") }
+  scope :by_category, ->(category_id) { where(category_id: category_id) }
+  scope :by_options, lambda { |options|
+    joins(:options).where(options: { id: options.pluck(:id) })
+                   .having("count(option_id) = #{options.size}")
+                   .group(:id)
+  }
 end
