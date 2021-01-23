@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :option do
-    name { "Black" }
+    value { "Black" }
+    filter
   end
 
   factory :filter do
