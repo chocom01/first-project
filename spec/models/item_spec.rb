@@ -96,27 +96,47 @@ RSpec.describe Item, type: :model do
   end
 
   describe '.by_category' do
-    subject { described_class.by_category(category_id) }
+    subject { described_class.by_category(category) }
+    let(:category) { create(:category, name: 'electronics') }
 
-    let!(:category) { create(:category, id: 111, name: 'electronics') }
-    # let!(:category1) { create(:category) }
-    let!(:item1) { create(:item, name: 'iphone', category: category) }
-    let!(:item2) { create(:item, name: 'mp3', category: category) }
-    let!(:item3) { create(:item, name: 'table', category: category1) }
+    context 'when items has category electronics' do
+      let(:item1) { create(:item, name: 'iphone', category: category) }
+      let(:item2) { create(:item, name: 'mp3', category: category) }
 
-    context 'when search by start of name successful' do
-      let(:category) { 111 }
-      it 'subject has search name by 2 first letter' do
-        expect(subject).to match_array(category)
+      it 'subject has search items by category' do
+        expect(subject).to match_array([item1, item2])
       end
     end
 
-    # context 'when search by start of name failed' do
-    #   let(:item_name) { 'parasha' }
-    #
-    #   it 'subject has array items' do
-    #     expect(subject).to eq([])
-    #   end
-    # end
+    context 'when item has defoult category' do
+      let(:item) { create(:item) }
+
+      it 'subject has empty array' do
+        expect(subject).to eq([])
+      end
+    end
   end
+
+  describe '#by_options' do
+  subject { described_class.by_options(options) }
+
+  let(:option1) { create(:option) }
+  let(:option2) { create(:option) }
+  let!(:item1) { create(:item, options: [option1, option2]) }
+  let(:options) { [option1, option2] }
+
+  context 'when we have two options' do
+    it 'show items with options' do
+      expect(subject).to match_array(item1)
+    end
+  end
+
+  context 'when options don\'t have items' do
+    let(:options) { [create(:option)] }
+
+    it 'show empty array' do
+      expect(subject).to eq([])
+    end
+  end
+end
 end
