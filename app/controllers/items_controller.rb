@@ -2,9 +2,15 @@
 
 class ItemsController < ApplicationController
   before_action :load_item, only: %i[show update destroy]
+  before_action :authenticate_user, only: %i[create]
 
   def index
-    render json: Item.all.page(params[:page])
+    items = Item.all
+    filtering_params.each do |filter, value|
+      items = items.public_send(filter, value)
+    end
+
+    render json: items.page(params[:page])
   end
 
   def show
@@ -40,10 +46,18 @@ class ItemsController < ApplicationController
     (@item = Item.find_by(id: params[:id])) || head(:not_found)
   end
 
- def category
-   @category = Category.first
- end
+  def category
+    @category = Category.first
+  end
+
   def current_user
     @current_user ||= User.first
+  end
+
+  def filtering_params
+    params.permit(
+      :by_city, :by_name, :by_category, :by_user, :price_min, :price_max,
+      :by_options
+    )
   end
 end
